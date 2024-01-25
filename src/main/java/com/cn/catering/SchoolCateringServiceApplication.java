@@ -1,4 +1,4 @@
-package com.charitha.schoolcateringservice;
+package com.cn.catering;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
