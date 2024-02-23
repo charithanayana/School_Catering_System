@@ -1,6 +1,5 @@
 package com.cn.catering.dto;
 
-import jakarta.persistence.Column;
 import lombok.*;
 
 @NoArgsConstructor
@@ -8,7 +7,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class ParentDto {
+public class GuardianDto {
     private String firstName;
     private String lastName;
     private String mobileNumber;

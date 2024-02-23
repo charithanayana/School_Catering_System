@@ -4,13 +4,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Entity
-@Table(name = "guardian")
+@Table(name = "schooladmin")
 @Getter
 @Setter
-public class Guardian {
+public class SchoolAdmin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +24,4 @@ public class Guardian {
     @Column(name = "mobile")
     private String mobile;
 
-    @Column(name = "email")
-    private String email;
-
-    @OneToMany(mappedBy = "guardian")
-    private List<Student> students;
 }

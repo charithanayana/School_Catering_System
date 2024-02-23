@@ -5,10 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "children")
+@Table(name = "catering_manager")
 @Getter
 @Setter
-public class Child {
+public class CateringManager {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,11 +21,7 @@ public class Child {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "index_number")
-    private String indexNumber;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "guardian_id")
-    private Guardian guardian;
+    @Column(name = "mobile")
+    private String mobile;
 
 }

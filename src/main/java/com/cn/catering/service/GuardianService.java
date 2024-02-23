@@ -1,8 +1,8 @@
 package com.cn.catering.service;
 
-import com.cn.catering.dto.ParentDto;
+import com.cn.catering.dto.GuardianDto;
 import com.cn.catering.model.Guardian;
-import com.cn.catering.repository.ParentRepository;
+import com.cn.catering.repository.GuardianRepository;
 import com.cn.catering.service.impl.GuardianServiceImpl;
 import org.springframework.stereotype.Service;
 
@@ -12,19 +12,19 @@ import java.util.Optional;
 public class GuardianService implements GuardianServiceImpl {
 
     final
-    ParentRepository parentRepository;
+    GuardianRepository parentRepository;
 
-    public GuardianService(ParentRepository parentRepository) {
+    public GuardianService(GuardianRepository parentRepository) {
         this.parentRepository = parentRepository;
     }
 
     @Override
-    public void createGuardian(ParentDto parentDto) {
+    public void createGuardian(GuardianDto parentDto) {
         Guardian parent = new Guardian();
         parent.setFirstName(parentDto.getFirstName());
         parent.setLastName(parentDto.getLastName());
         parent.setEmail(parentDto.getEmail());
-        parent.setTelephoneNumber(parentDto.getMobileNumber());
+        parent.setMobile(parentDto.getMobileNumber());
         parentRepository.save(parent);
     }
 

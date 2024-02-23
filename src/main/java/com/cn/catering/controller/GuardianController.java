@@ -1,6 +1,6 @@
 package com.cn.catering.controller;
 
-import com.cn.catering.dto.ParentDto;
+import com.cn.catering.dto.GuardianDto;
 import com.cn.catering.model.Guardian;
 import com.cn.catering.service.GuardianService;
 import org.springframework.http.HttpStatus;
@@ -23,7 +23,7 @@ public class GuardianController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = "application/json")
-    public void addParent(@RequestBody ParentDto parentDto) {
+    public void addParent(@RequestBody GuardianDto parentDto) {
         guardianService.createGuardian(parentDto);
     }
 }

@@ -7,10 +7,10 @@ import lombok.Setter;
 import java.util.List;
 
 @Entity
-@Table(name = "guardian")
+@Table(name = "consultant")
 @Getter
 @Setter
-public class Guardian {
+public class Consultant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +26,4 @@ public class Guardian {
     @Column(name = "mobile")
     private String mobile;
 
-    @Column(name = "email")
-    private String email;
-
-    @OneToMany(mappedBy = "guardian")
-    private List<Student> students;
 }
