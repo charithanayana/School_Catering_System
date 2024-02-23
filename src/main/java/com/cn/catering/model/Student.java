@@ -1,5 +1,8 @@
 package com.cn.catering.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -30,8 +33,9 @@ public class Student {
     @Column(name = "index_number")
     private String indexNumber;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "guardian_id")
+    @JsonIgnoreProperties("students")
     private Guardian guardian;
 
 }

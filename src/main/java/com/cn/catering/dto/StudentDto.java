@@ -7,11 +7,11 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class GuardianDto {
+public class StudentDto {
 
     private String firstName;
     private String lastName;
-    private String mobile;
-    private String email;
+    private String indexNumber;
+    private int guardianId;
 
 }

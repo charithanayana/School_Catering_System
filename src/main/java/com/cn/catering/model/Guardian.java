@@ -1,10 +1,13 @@
 package com.cn.catering.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "guardian")
@@ -29,6 +32,7 @@ public class Guardian {
     @Column(name = "email")
     private String email;
 
-    @OneToMany(mappedBy = "guardian")
-    private List<Student> students;
+    @OneToMany(mappedBy = "guardian", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties("guardian")
+    private Set<Student> students;
 }
