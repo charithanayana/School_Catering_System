@@ -1,5 +1,6 @@
 package com.cn.catering.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,8 +25,9 @@ public class MenuItem {
     @Column(name = "nutrition")
     private String nutrition;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "menu_id")
+    @JsonIgnoreProperties("items")
     private Menu menu;
 
 }
