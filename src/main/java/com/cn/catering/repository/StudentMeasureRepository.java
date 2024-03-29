@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface StudentMeasureRepository extends CrudRepository<StudentMeasure, Integer> {
 
+    public List<StudentMeasure> findByStudentId(int studentId);
 
 }

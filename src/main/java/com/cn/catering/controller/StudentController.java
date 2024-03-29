@@ -1,10 +1,12 @@
 package com.cn.catering.controller;
 
 import com.cn.catering.dto.GuardianDto;
+import com.cn.catering.dto.StudentBmi;
 import com.cn.catering.dto.StudentDto;
 import com.cn.catering.dto.StudentMeasureDto;
 import com.cn.catering.model.Guardian;
 import com.cn.catering.model.Student;
+import com.cn.catering.model.StudentMeasure;
 import com.cn.catering.service.StudentService;
 import com.cn.catering.service.impl.GuardianServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +47,12 @@ public class StudentController {
     @PostMapping(consumes = "application/json", value = "measure")
     public void addStudentMeasure(@RequestBody StudentMeasureDto studentMeasureDto) {
         studentService.saveStudentMeasure(studentMeasureDto);
+    }
+
+    @GetMapping(value = "/report/{id}")
+    @ResponseBody
+    public List<StudentBmi> getBmiDetails(@PathVariable("id") int studentId) {
+        return studentService.getStudentMeasures(studentId);
     }
 
 }

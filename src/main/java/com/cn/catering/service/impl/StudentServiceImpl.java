@@ -1,5 +1,6 @@
 package com.cn.catering.service.impl;
 
+import com.cn.catering.dto.StudentBmi;
 import com.cn.catering.dto.StudentDto;
 import com.cn.catering.dto.StudentMeasureDto;
 import com.cn.catering.model.Guardian;
@@ -9,10 +10,12 @@ import com.cn.catering.repository.GuardianRepository;
 import com.cn.catering.repository.StudentMeasureRepository;
 import com.cn.catering.repository.StudentRepository;
 import com.cn.catering.service.StudentService;
+import com.cn.catering.util.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -73,6 +76,25 @@ public class StudentServiceImpl implements StudentService {
         studentMeasure.setStudent(student);
         studentMeasure.setDate(studentMeasureDto.getDate());
         studentMeasureRepository.save(studentMeasure);
+    }
+
+    @Override
+    public List<StudentBmi> getStudentMeasures(int studentId) {
+        List<StudentMeasure> studentMeasures = studentMeasureRepository.findByStudentId(studentId);
+        List<StudentBmi> studentBmis = new ArrayList<>();
+        for (StudentMeasure studentMeasure : studentMeasures) {
+            String dateString = DateUtils.getFormattedDate(studentMeasure.getDate());
+            StudentBmi studentBmi = new StudentBmi();
+            studentBmi.setId(studentMeasure.getId());
+            studentBmi.setBmi(studentMeasure.getBmi());
+            studentBmi.setHeight(studentMeasure.getHeight());
+            studentBmi.setWeight(studentMeasure.getWeight());
+            studentBmi.setDate(studentMeasure.getDate());
+            studentBmi.setDateString(dateString);
+            studentBmis.add(studentBmi);
+        }
+        Collections.sort(studentBmis);
+        return studentBmis;
     }
 
 }
