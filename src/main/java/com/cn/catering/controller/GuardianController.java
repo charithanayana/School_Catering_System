@@ -1,7 +1,9 @@
 package com.cn.catering.controller;
 
 import com.cn.catering.dto.GuardianDto;
+import com.cn.catering.dto.StudentOrderDto;
 import com.cn.catering.model.Guardian;
+import com.cn.catering.model.StudentOrder;
 import com.cn.catering.model.User;
 import com.cn.catering.service.GuardianService;
 import com.cn.catering.service.UserService;
@@ -13,6 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping(value = "/guardians")
@@ -44,4 +47,16 @@ public class GuardianController {
         guardianService.createGuardian(guardianDto);
         userService.saveUser(user);
     }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(consumes = "application/json", value = "order")
+    public void addStudentOrder(@RequestBody StudentOrderDto studentOrderDto) {
+        guardianService.saveStudentOrder(studentOrderDto);
+    }
+
+    @GetMapping(value = "order/{studentId}")
+    public List<StudentOrder> getStudentOrderByStudentId(@PathVariable("studentId")  int studentId) {
+        return guardianService.getStudentOrderByStudentId(studentId);
+    }
+
 }

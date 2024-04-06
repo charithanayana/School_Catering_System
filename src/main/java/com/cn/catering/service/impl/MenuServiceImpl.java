@@ -6,6 +6,8 @@ import com.cn.catering.service.MenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MenuServiceImpl implements MenuService {
 
@@ -19,8 +21,12 @@ public class MenuServiceImpl implements MenuService {
     }
 
     @Override
-    public Menu getMenu(int id) {
+    public Menu getMenuById(int id) {
         return menuRepository.findById(id).get();
+    }
+
+    public List<Menu> getMenus() {
+        return menuRepository.findAll();
     }
 
 }

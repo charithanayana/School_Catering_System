@@ -3,6 +3,7 @@ package com.cn.catering.service;
 import com.cn.catering.dto.StudentBmi;
 import com.cn.catering.dto.StudentDto;
 import com.cn.catering.dto.StudentMeasureDto;
+import com.cn.catering.dto.StudentOrderDto;
 import com.cn.catering.model.Student;
 import com.cn.catering.model.StudentMeasure;
 

@@ -1,14 +1,8 @@
 package com.cn.catering.controller;
 
-import com.cn.catering.dto.GuardianDto;
-import com.cn.catering.dto.StudentBmi;
-import com.cn.catering.dto.StudentDto;
-import com.cn.catering.dto.StudentMeasureDto;
-import com.cn.catering.model.Guardian;
+import com.cn.catering.dto.*;
 import com.cn.catering.model.Student;
-import com.cn.catering.model.StudentMeasure;
 import com.cn.catering.service.StudentService;
-import com.cn.catering.service.impl.GuardianServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

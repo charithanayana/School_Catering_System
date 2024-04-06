@@ -3,12 +3,9 @@ package com.cn.catering.service.impl;
 import com.cn.catering.dto.StudentBmi;
 import com.cn.catering.dto.StudentDto;
 import com.cn.catering.dto.StudentMeasureDto;
-import com.cn.catering.model.Guardian;
-import com.cn.catering.model.Student;
-import com.cn.catering.model.StudentMeasure;
-import com.cn.catering.repository.GuardianRepository;
-import com.cn.catering.repository.StudentMeasureRepository;
-import com.cn.catering.repository.StudentRepository;
+import com.cn.catering.dto.StudentOrderDto;
+import com.cn.catering.model.*;
+import com.cn.catering.repository.*;
 import com.cn.catering.service.StudentService;
 import com.cn.catering.util.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +28,12 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentMeasureRepository studentMeasureRepository;
 
+    @Autowired
+    private StudentOrderRepository studentOrderRepository;
+
+    @Autowired
+    private MenuRepository menuRepository;
+
 
     @Override
     public void createStudent(StudentDto studentDto) {
@@ -50,13 +53,7 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> getAllStudents() {
-        // This needs to refactor
-        Iterable<Student> it = studentRepository.findAll();
-        List<Student> list = new ArrayList<>();
-        for (Student st: it) {
-            list.add(st);
-        }
-        return list;
+        return studentRepository.findAll();
     }
 
     @Override
