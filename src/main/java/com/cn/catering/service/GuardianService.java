@@ -7,13 +7,18 @@ import com.cn.catering.model.StudentOrder;
 
 import java.util.List;
 
+import java.util.List;
+
 public interface GuardianService {
 
     public void createGuardian(GuardianDto parentDto);
     public Guardian getGuardian(int id);
 
+
     public void saveStudentOrder(StudentOrderDto studentOrderDto);
 
     public List<StudentOrder> getStudentOrderByStudentId(int studentId);
+
+    List<Guardian> getAllGuardian();
 
 }

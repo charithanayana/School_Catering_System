@@ -65,4 +65,9 @@ public class GuardianServiceImpl implements GuardianService {
         return studentOrderRepository.findByStudentId(studentId);
     }
 
+    @Override
+    public List<Guardian> getAllGuardian() {
+        return parentRepository.findAll();
+    }
+
 }

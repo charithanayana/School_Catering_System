@@ -59,4 +59,8 @@ public class GuardianController {
         return guardianService.getStudentOrderByStudentId(studentId);
     }
 
+    @GetMapping
+    public List<Guardian> getGuardingList() {
+        return guardianService.getAllGuardian();
+    }
 }
