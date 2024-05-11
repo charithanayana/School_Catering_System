@@ -13,7 +13,7 @@ import java.util.Set;
 @Table(name = "guardian")
 @Getter
 @Setter
-public class    Guardian {
+public class Guardian {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,4 +35,13 @@ public class    Guardian {
     @OneToMany(mappedBy = "guardian", fetch = FetchType.LAZY)
     @JsonIgnoreProperties("guardian")
     private Set<Student> students;
+
+    public Guardian() {
+
+    }
+
+    public Guardian(int id) {
+        this.id = id;
+    }
+
 }

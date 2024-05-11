@@ -28,4 +28,12 @@ public class Menu {
     @JsonIgnoreProperties("menu")
     private List<MenuItem> items;
 
+    public Menu() {
+
+    }
+
+    public Menu(int id) {
+        this.id = id;
+    }
+
 }
