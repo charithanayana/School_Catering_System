@@ -2,7 +2,7 @@ package com.cn.catering.controller;
 
 import com.cn.catering.dto.*;
 import com.cn.catering.model.Student;
-import com.cn.catering.service.StudentService;
+import com.cn.catering.service.impl.StudentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,7 @@ import java.util.List;
 public class StudentController {
 
     @Autowired
-    private StudentService studentService;
+    private StudentServiceImpl studentService;
 
     @GetMapping
     public List<Student> getAllStudents() {

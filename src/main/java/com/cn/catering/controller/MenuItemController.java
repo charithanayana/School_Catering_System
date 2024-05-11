@@ -1,10 +1,8 @@
 package com.cn.catering.controller;
 
 import com.cn.catering.dto.MenuItemDto;
-import com.cn.catering.model.Menu;
 import com.cn.catering.model.MenuItem;
-import com.cn.catering.service.MenuItemService;
-import com.cn.catering.service.MenuService;
+import com.cn.catering.service.impl.MenuItemServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class MenuItemController {
 
     @Autowired
-    private MenuItemService menuItemService;
+    private MenuItemServiceImpl menuItemService;
 
     @GetMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.OK)

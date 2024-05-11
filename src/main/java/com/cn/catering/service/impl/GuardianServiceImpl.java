@@ -10,7 +10,6 @@ import com.cn.catering.repository.GuardianRepository;
 import com.cn.catering.repository.MenuRepository;
 import com.cn.catering.repository.StudentOrderRepository;
 import com.cn.catering.repository.StudentRepository;
-import com.cn.catering.service.GuardianService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +17,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class GuardianServiceImpl implements GuardianService {
+public class GuardianServiceImpl {
 
 
     @Autowired
@@ -33,7 +32,7 @@ public class GuardianServiceImpl implements GuardianService {
     @Autowired
     private MenuRepository menuRepository;
 
-    @Override
+
     public void createGuardian(GuardianDto parentDto) {
         Guardian parent = new Guardian();
         parent.setFirstName(parentDto.getFirstName());
@@ -43,13 +42,13 @@ public class GuardianServiceImpl implements GuardianService {
         parentRepository.save(parent);
     }
 
-    @Override
+
     public Guardian getGuardian(int id) {
         Optional<Guardian> parent = parentRepository.findById(id);
         return parent.get();
     }
 
-    @Override
+
     public void saveStudentOrder(StudentOrderDto studentOrderDto) {
         Student student = studentRepository.findById(studentOrderDto.getStudentId()).get();
         Menu menu = menuRepository.findById(studentOrderDto.getMenuId()).get();
@@ -60,12 +59,12 @@ public class GuardianServiceImpl implements GuardianService {
         studentOrderRepository.save(studentOrder);
     }
 
-    @Override
+
     public List<StudentOrder> getStudentOrderByStudentId(int studentId) {
         return studentOrderRepository.findByStudentId(studentId);
     }
 
-    @Override
+
     public List<Guardian> getAllGuardian() {
         return parentRepository.findAll();
     }

@@ -5,9 +5,8 @@ import com.cn.catering.dto.StudentOrderDto;
 import com.cn.catering.model.Guardian;
 import com.cn.catering.model.StudentOrder;
 import com.cn.catering.model.User;
-import com.cn.catering.service.GuardianService;
-import com.cn.catering.service.UserService;
 import com.cn.catering.service.impl.GuardianServiceImpl;
+import com.cn.catering.service.impl.UserServiceImpl;
 import com.cn.catering.type.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,10 +22,10 @@ import java.util.List;
 public class GuardianController {
 
     @Autowired
-    private GuardianService guardianService;
+    private GuardianServiceImpl guardianService;
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;

@@ -1,22 +1,16 @@
 package com.cn.catering.controller;
 
 import com.cn.catering.dto.AuthDto;
-import com.cn.catering.dto.GuardianDto;
 import com.cn.catering.exception.AuthException;
 import com.cn.catering.exception.NotFoundException;
-import com.cn.catering.model.Guardian;
 import com.cn.catering.model.User;
-import com.cn.catering.service.GuardianService;
-import com.cn.catering.service.UserService;
+import com.cn.catering.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 @RestController
@@ -25,7 +19,7 @@ import java.util.Base64;
 public class AuthController {
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
 
     @Autowired
     private PasswordEncoder passwordEncoder;

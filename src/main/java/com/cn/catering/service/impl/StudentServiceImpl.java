@@ -3,21 +3,18 @@ package com.cn.catering.service.impl;
 import com.cn.catering.dto.StudentBmi;
 import com.cn.catering.dto.StudentDto;
 import com.cn.catering.dto.StudentMeasureDto;
-import com.cn.catering.dto.StudentOrderDto;
 import com.cn.catering.model.*;
 import com.cn.catering.repository.*;
-import com.cn.catering.service.StudentService;
 import com.cn.catering.util.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 @Service
-public class StudentServiceImpl implements StudentService {
+public class StudentServiceImpl {
 
     @Autowired
     private GuardianRepository guardianRepository;
@@ -34,8 +31,6 @@ public class StudentServiceImpl implements StudentService {
     @Autowired
     private MenuRepository menuRepository;
 
-
-    @Override
     public void createStudent(StudentDto studentDto) {
         Guardian guardian = guardianRepository.findById(studentDto.getGuardianId()).get();
         Student student = new Student();
@@ -46,22 +41,21 @@ public class StudentServiceImpl implements StudentService {
         studentRepository.save(student);
     }
 
-    @Override
     public Student getStudentById(int studentId) {
         return studentRepository.findById(studentId).get();
     }
 
-    @Override
+
     public List<Student> getAllStudents() {
         return studentRepository.findAll();
     }
 
-    @Override
+
     public List<Student> getStudentsByGuardianId(int guardianId) {
         return studentRepository.findByGuardianId(guardianId);
     }
 
-    @Override
+
     public void saveStudentMeasure(StudentMeasureDto studentMeasureDto) {
         Student student = studentRepository.findById(studentMeasureDto.getStudentId()).get();
         double heightInMeter = studentMeasureDto.getHeight() / 100;
@@ -75,7 +69,7 @@ public class StudentServiceImpl implements StudentService {
         studentMeasureRepository.save(studentMeasure);
     }
 
-    @Override
+
     public List<StudentBmi> getStudentMeasures(int studentId) {
         List<StudentMeasure> studentMeasures = studentMeasureRepository.findByStudentId(studentId);
         List<StudentBmi> studentBmis = new ArrayList<>();
