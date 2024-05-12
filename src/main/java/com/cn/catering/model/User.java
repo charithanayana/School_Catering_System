@@ -30,4 +30,10 @@ public class User {
     @Column(name = "created_at")
     private Date createdAt;
 
+    public User() {}
+
+    public User(int id) {
+        this.id = id;
+    }
+
 }

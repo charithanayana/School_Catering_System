@@ -2,6 +2,7 @@ package com.cn.catering.service.impl;
 
 import com.cn.catering.dto.ConsultantDto;
 import com.cn.catering.model.Consultant;
+import com.cn.catering.model.User;
 import com.cn.catering.repository.ConsultantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ public class ConsultantService {
         consultant.setLastName(consultantDto.getLastName());
         consultant.setMobile(consultantDto.getMobile());
         consultant.setHospital(consultantDto.getHospital());
+        consultant.setUser(new User(consultantDto.getUserId()));
         consultantRepository.save(consultant);
     }
 

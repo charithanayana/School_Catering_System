@@ -29,4 +29,8 @@ public class Consultant {
     @Column(name = "hospital")
     private String hospital;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
 }

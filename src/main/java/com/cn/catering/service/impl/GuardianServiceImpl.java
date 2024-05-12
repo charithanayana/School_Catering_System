@@ -2,10 +2,7 @@ package com.cn.catering.service.impl;
 
 import com.cn.catering.dto.GuardianDto;
 import com.cn.catering.dto.StudentOrderDto;
-import com.cn.catering.model.Guardian;
-import com.cn.catering.model.Menu;
-import com.cn.catering.model.Student;
-import com.cn.catering.model.StudentOrder;
+import com.cn.catering.model.*;
 import com.cn.catering.repository.GuardianRepository;
 import com.cn.catering.repository.MenuRepository;
 import com.cn.catering.repository.StudentOrderRepository;
@@ -33,13 +30,14 @@ public class GuardianServiceImpl {
     private MenuRepository menuRepository;
 
 
-    public void createGuardian(GuardianDto parentDto) {
-        Guardian parent = new Guardian();
-        parent.setFirstName(parentDto.getFirstName());
-        parent.setLastName(parentDto.getLastName());
-        parent.setEmail(parentDto.getEmail());
-        parent.setMobile(parentDto.getMobile());
-        parentRepository.save(parent);
+    public void createGuardian(GuardianDto guardianDto) {
+        Guardian guardian = new Guardian();
+        guardian.setFirstName(guardianDto.getFirstName());
+        guardian.setLastName(guardianDto.getLastName());
+        guardian.setEmail(guardianDto.getEmail());
+        guardian.setMobile(guardianDto.getMobile());
+        guardian.setUser(new User(guardianDto.getUserId()));
+        parentRepository.save(guardian);
     }
 
 

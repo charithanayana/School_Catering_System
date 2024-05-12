@@ -4,6 +4,8 @@ public enum UserType {
 
     ADMIN,
     GUARDIAN,
-    CONSULTANT
+    CONSULTANT,
+
+    CATERING_ADMIN
 
 }

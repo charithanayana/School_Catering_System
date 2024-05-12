@@ -15,5 +15,6 @@ public class ConsultantDto {
     private String hospital;
     private String userName;
     private String password;
+    private int userId;
 
 }

@@ -36,9 +36,11 @@ public class Guardian {
     @JsonIgnoreProperties("guardian")
     private Set<Student> students;
 
-    public Guardian() {
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    }
+    public Guardian() {}
 
     public Guardian(int id) {
         this.id = id;

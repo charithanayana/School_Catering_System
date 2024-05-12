@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/menuitems")
+@CrossOrigin
 public class MenuItemController {
 
     @Autowired

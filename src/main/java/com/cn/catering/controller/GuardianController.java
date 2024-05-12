@@ -43,8 +43,10 @@ public class GuardianController {
         user.setPassword(passwordEncoder.encode(guardianDto.getPassword()));
         user.setCreatedAt(new Date());
         user.setUserType(UserType.GUARDIAN);
-        guardianService.createGuardian(guardianDto);
         userService.saveUser(user);
+
+        guardianDto.setUserId(user.getId());
+        guardianService.createGuardian(guardianDto);
     }
 
     @ResponseStatus(HttpStatus.CREATED)

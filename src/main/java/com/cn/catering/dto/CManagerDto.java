@@ -1,6 +1,5 @@
 package com.cn.catering.dto;
 
-import com.cn.catering.type.UserType;
 import lombok.*;
 
 @NoArgsConstructor
@@ -8,13 +7,13 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
-public class AuthDto {
+public class CManagerDto {
 
-    private Integer id;
-    private Integer userId;
+    private String firstName;
+    private String lastName;
+    private String mobile;
     private String userName;
     private String password;
-    private String token;
-    private UserType userType;
+    private int userId;
 
 }

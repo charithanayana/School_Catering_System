@@ -5,6 +5,7 @@ import com.cn.catering.exception.AuthException;
 import com.cn.catering.exception.NotFoundException;
 import com.cn.catering.model.User;
 import com.cn.catering.service.impl.UserServiceImpl;
+import com.cn.catering.type.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -36,7 +37,10 @@ public class AuthController {
         String rowStr = authDto.getUserName() + ":" + authDto.getPassword();
         byte[] base64ArrByte = Base64.getEncoder().encode(rowStr.getBytes());
         String base64Str = new String(base64ArrByte);
-        authDto.setUserId(user.getId());
+        authDto.setId(user.getId());
+        if (!UserType.ADMIN.equals(user.getUserType())) {
+            authDto.setUserId(userService.getUserIdByUserTypeAndId(user.getUserType(), user.getId()));
+        }
         authDto.setToken(base64Str);
         authDto.setUserType(user.getUserType());
         authDto.setPassword(null);

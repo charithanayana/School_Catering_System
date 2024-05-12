@@ -7,4 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface GuardianRepository extends JpaRepository<Guardian, Integer> {
+
+    public Guardian findByUserId(int userId);
+
 }

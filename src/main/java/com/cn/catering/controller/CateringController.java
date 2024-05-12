@@ -1,10 +1,10 @@
 package com.cn.catering.controller;
 
-import com.cn.catering.dto.ConsultantDto;
+import com.cn.catering.dto.CManagerDto;
+import com.cn.catering.model.CateringManager;
 import com.cn.catering.model.Consultant;
-import com.cn.catering.model.Guardian;
 import com.cn.catering.model.User;
-import com.cn.catering.service.impl.ConsultantService;
+import com.cn.catering.service.impl.CateringService;
 import com.cn.catering.service.impl.UserServiceImpl;
 import com.cn.catering.type.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +16,9 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/consultants")
+@RequestMapping(value = "/caterings")
 @CrossOrigin
-public class ConsultantController {
-
-    @Autowired
-    private ConsultantService consultantService;
+public class CateringController {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -29,22 +26,25 @@ public class ConsultantController {
     @Autowired
     private UserServiceImpl userService;
 
+    @Autowired
+    private CateringService cateringService;
+
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(consumes = "application/json")
-    public void addConsultant(@RequestBody ConsultantDto consultantDto) {
+    public void addCateringManager(@RequestBody CManagerDto cManagerDto) {
         User user = new User();
-        user.setUserName(consultantDto.getUserName());
-        user.setPassword(passwordEncoder.encode(consultantDto.getPassword()));
+        user.setUserName(cManagerDto.getUserName());
+        user.setPassword(passwordEncoder.encode(cManagerDto.getPassword()));
         user.setCreatedAt(new Date());
-        user.setUserType(UserType.CONSULTANT);
+        user.setUserType(UserType.CATERING_ADMIN);
         userService.saveUser(user);
-        consultantDto.setUserId(user.getId());
-        consultantService.saveConsultant(consultantDto);
+        cManagerDto.setUserId(user.getId());
+        cateringService.saveCateringManager(cManagerDto);
     }
 
     @GetMapping
-    public List<Consultant> getGuardingList() {
-        return consultantService.getAllConsultants();
+    public List<CateringManager> getGuardingList() {
+        return cateringService.getAllConsultants();
     }
 
 }

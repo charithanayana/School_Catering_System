@@ -24,4 +24,8 @@ public class CateringManager {
     @Column(name = "mobile")
     private String mobile;
 
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
 }
