@@ -24,13 +24,14 @@ public class Menu {
     @Column(name = "description")
     private String description;
 
+    @Column(name = "price")
+    private Double price;
+
     @OneToMany(mappedBy = "menu", fetch = FetchType.LAZY)
     @JsonIgnoreProperties("menu")
     private List<MenuItem> items;
 
-    public Menu() {
-
-    }
+    public Menu() {}
 
     public Menu(int id) {
         this.id = id;

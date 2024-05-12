@@ -12,6 +12,7 @@ public class MenuItemDto {
     private String name;
     private String description;
     private String nutrition;
+    private double price;
     private int menuId;
 
 }

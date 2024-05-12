@@ -25,6 +25,9 @@ public class MenuItem {
     @Column(name = "nutrition")
     private String nutrition;
 
+    @Column(name = "price")
+    private Double price;
+
     @ManyToOne
     @JoinColumn(name = "menu_id")
     @JsonIgnoreProperties("items")

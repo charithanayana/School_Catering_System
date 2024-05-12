@@ -26,6 +26,7 @@ public class MenuItemServiceImpl  {
         menuItem.setDescription(menuItemDto.getDescription());
         menuItem.setNutrition(menuItemDto.getNutrition());
         menuItem.setMenu(menu);
+        menuItem.setPrice(menuItemDto.getPrice());
         menuItemRepository.save(menuItem);
     }
 
