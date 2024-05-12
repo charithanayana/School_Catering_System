@@ -26,4 +26,7 @@ public class Consultant {
     @Column(name = "mobile")
     private String mobile;
 
+    @Column(name = "hospital")
+    private String hospital;
+
 }
