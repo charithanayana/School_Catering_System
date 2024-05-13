@@ -3,11 +3,13 @@ package com.cn.catering.controller;
 import com.cn.catering.dto.CManagerDto;
 import com.cn.catering.model.CateringManager;
 import com.cn.catering.model.Consultant;
+import com.cn.catering.model.StudentOrder;
 import com.cn.catering.model.User;
 import com.cn.catering.service.impl.CateringService;
 import com.cn.catering.service.impl.UserServiceImpl;
 import com.cn.catering.type.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
@@ -43,8 +45,14 @@ public class CateringController {
     }
 
     @GetMapping
-    public List<CateringManager> getGuardingList() {
+    public List<CateringManager> getConsultantList() {
         return cateringService.getAllConsultants();
+    }
+
+    @GetMapping(path = "/order/{date}")
+    public List<StudentOrder> getOrdersByDate(@PathVariable("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date) {
+        System.out.println("Date : " + date);
+        return cateringService.getOrdersByDate(date);
     }
 
 }
