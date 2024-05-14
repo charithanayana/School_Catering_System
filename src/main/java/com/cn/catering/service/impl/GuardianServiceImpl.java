@@ -7,6 +7,7 @@ import com.cn.catering.repository.GuardianRepository;
 import com.cn.catering.repository.MenuRepository;
 import com.cn.catering.repository.StudentOrderRepository;
 import com.cn.catering.repository.StudentRepository;
+import com.cn.catering.type.PayType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,9 +58,21 @@ public class GuardianServiceImpl {
         studentOrderRepository.save(studentOrder);
     }
 
+    public void payStudentOrders(List<Integer> orderIds) {
+        for (int orderId : orderIds) {
+            StudentOrder studentOrder = studentOrderRepository.findById(orderId);
+            studentOrder.setPayType(PayType.PAID);
+            studentOrderRepository.save(studentOrder);
+        }
+    }
 
-    public List<StudentOrder> getStudentOrderByStudentId(int studentId) {
-        return studentOrderRepository.findByStudentId(studentId);
+
+    public List<StudentOrder> getStudentOrderByStudentId(int studentId, PayType payType) {
+        if (payType != null) {
+            return studentOrderRepository.findByStudentIdAndPayType(studentId, payType);
+        } else {
+            return studentOrderRepository.findByStudentId(studentId);
+        }
     }
 
 

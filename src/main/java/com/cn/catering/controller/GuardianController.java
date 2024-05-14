@@ -7,6 +7,7 @@ import com.cn.catering.model.StudentOrder;
 import com.cn.catering.model.User;
 import com.cn.catering.service.impl.GuardianServiceImpl;
 import com.cn.catering.service.impl.UserServiceImpl;
+import com.cn.catering.type.PayType;
 import com.cn.catering.type.UserType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -55,9 +56,16 @@ public class GuardianController {
         guardianService.saveStudentOrder(studentOrderDto);
     }
 
+    @PostMapping(consumes = "application/json", value = "pay-order")
+    public void payStudentOrders(@RequestBody List<Integer> orderIds) {
+        guardianService.payStudentOrders(orderIds);
+    }
+
     @GetMapping(value = "order/{studentId}")
-    public List<StudentOrder> getStudentOrderByStudentId(@PathVariable("studentId")  int studentId) {
-        return guardianService.getStudentOrderByStudentId(studentId);
+    public List<StudentOrder> getStudentOrderByStudentId(
+            @PathVariable("studentId")  int studentId,
+            @RequestParam(value = "payType", required = false) PayType payType) {
+        return guardianService.getStudentOrderByStudentId(studentId, payType);
     }
 
     @GetMapping

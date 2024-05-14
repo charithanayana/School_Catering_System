@@ -1,5 +1,6 @@
 package com.cn.catering.dto;
 
+import com.cn.catering.type.PayType;
 import lombok.*;
 
 import java.util.Date;
@@ -14,5 +15,6 @@ public class StudentOrderDto {
     private int studentId;
     private Date date;
     private int menuId;
+    private PayType payType;
 
 }

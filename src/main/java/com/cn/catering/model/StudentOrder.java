@@ -1,5 +1,6 @@
 package com.cn.catering.model;
 
+import com.cn.catering.type.PayType;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,5 +28,8 @@ public class StudentOrder {
     @ManyToOne
     @JoinColumn(name = "menu_id")
     private Menu menu;
+
+    @Column(name = "pay_type", columnDefinition = "tinyint(4) default 0")
+    private PayType payType;
 
 }
