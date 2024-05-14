@@ -55,6 +55,7 @@ public class GuardianServiceImpl {
         studentOrder.setStudent(student);
         studentOrder.setMenu(menu);
         studentOrder.setDate(studentOrderDto.getDate());
+        studentOrder.setPayType(PayType.NOT_PAID);
         studentOrderRepository.save(studentOrder);
     }
 
