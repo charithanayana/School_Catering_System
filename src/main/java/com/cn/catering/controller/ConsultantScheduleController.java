@@ -2,11 +2,7 @@ package com.cn.catering.controller;
 
 import com.cn.catering.model.Consultant;
 import com.cn.catering.model.ConsultantSchedule;
-import com.cn.catering.model.Guardian;
-import com.cn.catering.model.Student;
 import com.cn.catering.service.impl.ConsultantScheduleService;
-import com.cn.catering.service.impl.ConsultantService;
-import com.cn.catering.service.impl.GuardianServiceImpl;
 import com.cn.catering.type.ConsultationStatus;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -23,15 +19,20 @@ public class ConsultantScheduleController {
     @Autowired
     private ConsultantScheduleService consultantScheduleService;
 
-    @GetMapping(value = "consultant/{date}")
-    public void generateConsultantSchedule(@PathVariable("date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date) {
+    @GetMapping(value = "/consultant")
+    public void generateConsultantSchedule(
+            @RequestParam(value = "date", required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date date) {
+        date = date != null ? date : new Date();
         consultantScheduleService.saveConsultantSchedule(date);
     }
 
-    @GetMapping
-    public List<ConsultantSchedule> getAllSchedules(@RequestParam(value = "status", required = false) ConsultationStatus status) {
+    @GetMapping(value = "/consultant/{consultantId}")
+    public List<ConsultantSchedule> getAllSchedules(
+            @PathVariable("consultantId") int consultantId,
+            @RequestParam(value = "status", required = false) ConsultationStatus status) {
         status = status != null ? status : ConsultationStatus.PENDING;
-        return consultantScheduleService.getAllConsultantSchedules(status);
+        Consultant consultant = new Consultant(consultantId);
+        return consultantScheduleService.getSchedulesByConsultantIdAndStatus(status, consultant);
     }
 
     @GetMapping(value = "/{scheduleId}")

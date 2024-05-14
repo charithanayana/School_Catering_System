@@ -10,6 +10,6 @@ import java.util.List;
 
 public interface ConsultantScheduleRepository extends JpaRepository<ConsultantSchedule, Integer>  {
 
-    public List<ConsultantSchedule> findByStatus(ConsultationStatus status);
+    public List<ConsultantSchedule> findByStatusAndConsultant(ConsultationStatus status, Consultant consultant);
 
 }

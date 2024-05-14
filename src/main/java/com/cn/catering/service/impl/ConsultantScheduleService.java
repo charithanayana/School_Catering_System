@@ -1,6 +1,5 @@
 package com.cn.catering.service.impl;
 
-import com.cn.catering.dto.ConsultantDto;
 import com.cn.catering.model.*;
 import com.cn.catering.repository.*;
 import com.cn.catering.type.ConsultationStatus;
@@ -54,8 +53,8 @@ public class ConsultantScheduleService {
         }
     }
 
-    public List<ConsultantSchedule> getAllConsultantSchedules(ConsultationStatus status) {
-        return consultantScheduleRepository.findByStatus(status);
+    public List<ConsultantSchedule> getSchedulesByConsultantIdAndStatus(ConsultationStatus status, Consultant consultant) {
+        return consultantScheduleRepository.findByStatusAndConsultant(status, consultant);
     }
 
     public ConsultantSchedule getScheduleById(int scheduleId) {

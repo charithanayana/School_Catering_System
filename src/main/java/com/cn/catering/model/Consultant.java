@@ -33,4 +33,10 @@ public class Consultant {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public Consultant() {}
+
+    public Consultant(Integer id) {
+        this.id = id;
+    }
+
 }
